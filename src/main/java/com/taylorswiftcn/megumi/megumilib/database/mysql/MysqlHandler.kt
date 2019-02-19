@@ -22,7 +22,7 @@ constructor(
     override fun openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver")
-            connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s?useSSL=false", hostname, port, database), username, password)
+            connection = DriverManager.getConnection("jdbc:mysql://$hostname:$port/$database?useSSL=false", username, password)
 
         } catch (e: SQLException) {
             plugin.logger.info("连接数据库失败!")

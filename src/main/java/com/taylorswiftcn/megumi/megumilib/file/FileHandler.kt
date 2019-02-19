@@ -13,10 +13,10 @@ class FileHandler constructor(private val plugin: JavaPlugin) {
         if (!file.exists()) {
             file.parentFile.mkdirs()
             copyFile(plugin.getResource(fileName), file)
-            plugin.logger.info(String.format("File: Create %s file success", fileName))
+            plugin.logger.info("File: Create $fileName file success")
         }
         else {
-            plugin.logger.info(String.format("File: Load %s file success", fileName))
+            plugin.logger.info("File: Load $fileName file success")
         }
 
         return YamlConfiguration.loadConfiguration(file)
