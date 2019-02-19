@@ -6,8 +6,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
-class FileHandler constructor(plugin: JavaPlugin) {
-    private lateinit var plugin: JavaPlugin
+class FileHandler constructor(private val plugin: JavaPlugin) {
 
     fun initFile(fileName: String): YamlConfiguration {
         val file = File(plugin.dataFolder, fileName)
