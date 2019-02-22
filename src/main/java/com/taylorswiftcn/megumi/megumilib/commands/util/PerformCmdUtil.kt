@@ -35,7 +35,7 @@ class PerformCmdUtil {
             Bukkit.getPluginManager().callEvent(event)
             if (event.isCancelled) return
 
-            player.performCommand(string)
+            player.performCommand(event.message.replace("/", ""))
         }
 
         fun opCmd(player: Player, command: String) {
