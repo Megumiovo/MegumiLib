@@ -23,7 +23,7 @@ class MegumiLib : JavaPlugin() {
     }
 
     fun getVersion(): String {
-        val packet = Bukkit.getServer().javaClass.`package`.name;
+        val packet = Bukkit.getServer().javaClass.`package`.name
         return packet.substring(packet.lastIndexOf('.') + 1)
     }
 }

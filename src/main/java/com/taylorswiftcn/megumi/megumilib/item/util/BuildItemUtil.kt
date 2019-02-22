@@ -23,7 +23,7 @@ class BuildItemUtil {
             var name = _name
             var lore = _lore
 
-            var item: ItemStack? = null
+            var item: ItemStack?
 
             if (MathRegularUtil.isPositiveInt(id)) {
                 if (plugin.getVersion().startsWith("V1_13")) {
