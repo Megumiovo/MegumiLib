@@ -22,6 +22,11 @@ class FileHandler constructor(private val plugin: JavaPlugin) {
         return YamlConfiguration.loadConfiguration(file)
     }
 
+    fun saveFile(fileName: String, yamlConfiguration: YamlConfiguration) {
+        val file = File(plugin.dataFolder, fileName)
+        yamlConfiguration.save(file)
+    }
+
     private fun copyFile(inputStream: InputStream, file: File) {
         try {
             val fileOutputStream = FileOutputStream(file)
