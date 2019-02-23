@@ -9,18 +9,20 @@ class PerformCmdUtil {
 
         fun execution(player: Player, commands: List<String>) {
             for (cmd in commands) {
+                val command = cmd.replace("%player%", player.name)
+
                 if (cmd.startsWith("[player]")) {
-                    playerCmd(player, cmd.replace("[player]", ""))
+                    playerCmd(player, command.replace("[player]", ""))
                     return
                 }
 
                 if (cmd.startsWith("[op]")) {
-                    opCmd(player, cmd.replace("[op]", ""))
+                    opCmd(player, command.replace("[op]", ""))
                     return
                 }
 
                 if (cmd.startsWith("[console]")) {
-                    consoleCmd(cmd.replace("[console]", ""))
+                    consoleCmd(command.replace("[console]", ""))
                     return
                 }
 
@@ -29,9 +31,7 @@ class PerformCmdUtil {
         }
 
         fun playerCmd(player: Player, command: String) {
-            val string = command.replace("%player%", player.name)
-
-            val event = PlayerCommandPreprocessEvent(player, "/$string")
+            val event = PlayerCommandPreprocessEvent(player, "/$command")
             Bukkit.getPluginManager().callEvent(event)
             if (event.isCancelled) return
 
