@@ -12,11 +12,11 @@ class BuildItemUtil {
 
         private val plugin = MegumiLib.getInstance()
 
-        fun create(_id: String, _data: Int, _amount: Int): ItemStack {
+        fun create(_id: String, _data: Short, _amount: Int): ItemStack {
             return create(_id, _data, _amount, null, null)
         }
 
-        fun create(_id: String, _data: Int, _amount: Int, _name: String?, _lore: List<String>?): ItemStack {
+        fun create(_id: String, _data: Short, _amount: Int, _name: String?, _lore: List<String>?): ItemStack {
             var id = _id
             var data = _data
             var amount = _amount
@@ -39,7 +39,7 @@ class BuildItemUtil {
                 item = ItemStack(Material.getMaterial(id), amount)
             }
 
-            item.durability = data.toShort()
+            item.durability = data
 
             var meta: ItemMeta = item.itemMeta
 
