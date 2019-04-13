@@ -6,16 +6,22 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLException
+import java.util.*
 
 class SqliteHandler constructor(private var datebase: String): MegumiSQL() {
 
     private val plugin: MegumiLib = MegumiLib.getInstance()
     private var connection: Connection? = null
+    private var properties: Properties = Properties()
+
+    init {
+        properties["date_string_format"] = "yyyy-MM-dd HH:mm:ss"
+    }
 
     override fun openConnection() {
         try {
             Class.forName("org.sqlite.JDBC")
-            connection = DriverManager.getConnection("jdbc:sqlite:${plugin.dataFolder}/$datebase.db")
+            connection = DriverManager.getConnection("jdbc:sqlite:${plugin.dataFolder}/$datebase.db", properties)
 
         } catch (e: SQLException) {
             plugin.logger.info("连接数据库失败!")
