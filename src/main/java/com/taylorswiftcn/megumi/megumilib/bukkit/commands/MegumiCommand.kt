@@ -1,4 +1,4 @@
-package com.taylorswiftcn.megumi.megumilib.commands
+package com.taylorswiftcn.megumi.megumilib.bukkit.commands
 
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player

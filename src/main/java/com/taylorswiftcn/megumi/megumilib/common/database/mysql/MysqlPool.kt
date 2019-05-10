@@ -1,4 +1,4 @@
-package com.taylorswiftcn.megumi.megumilib.database.mysql
+package com.taylorswiftcn.megumi.megumilib.common.database.mysql
 
 import java.util.*
 

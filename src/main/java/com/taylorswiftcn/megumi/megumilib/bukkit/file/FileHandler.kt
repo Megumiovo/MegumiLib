@@ -1,4 +1,4 @@
-package com.taylorswiftcn.megumi.megumilib.file
+package com.taylorswiftcn.megumi.megumilib.bukkit.file
 
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin

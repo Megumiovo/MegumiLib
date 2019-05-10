@@ -1,4 +1,4 @@
-package com.taylorswiftcn.megumi.megumilib.util
+package com.taylorswiftcn.megumi.megumilib.bukkit.util
 
 import java.util.ArrayList
 

@@ -1,27 +1,28 @@
-package com.taylorswiftcn.megumi.megumilib.database.sqlite
+package com.taylorswiftcn.megumi.megumilib.common.database.mysql
 
 import com.taylorswiftcn.megumi.megumilib.MegumiLib
-import com.taylorswiftcn.megumi.megumilib.database.MegumiSQL
+import com.taylorswiftcn.megumi.megumilib.common.database.MegumiSQL
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLException
-import java.util.*
 
-class SqliteHandler constructor(private var datebase: String): MegumiSQL() {
+class MysqlHandler
+constructor(
+        private var hostname: String,
+        private var port: String,
+        private var database: String,
+        private var username: String,
+        private var password: String
+) : MegumiSQL() {
 
     private val plugin: MegumiLib = MegumiLib.getInstance()
     private var connection: Connection? = null
-    private var properties: Properties = Properties()
-
-    init {
-        properties["date_string_format"] = "yyyy-MM-dd HH:mm:ss"
-    }
 
     override fun openConnection() {
         try {
-            Class.forName("org.sqlite.JDBC")
-            connection = DriverManager.getConnection("jdbc:sqlite:${plugin.dataFolder}/$datebase.db", properties)
+            Class.forName("com.mysql.jdbc.Driver")
+            connection = DriverManager.getConnection("jdbc:mysql://$hostname:$port/$database?useSSL=false", username, password)
 
         } catch (e: SQLException) {
             plugin.logger.info("连接数据库失败!")
@@ -62,7 +63,7 @@ class SqliteHandler constructor(private var datebase: String): MegumiSQL() {
         return null
     }
 
-    @Synchronized override fun updateSQL(update: String) {
+    override fun updateSQL(update: String) {
         try {
             val stat = connection!!.createStatement()
             stat.executeUpdate(update)
@@ -71,4 +72,5 @@ class SqliteHandler constructor(private var datebase: String): MegumiSQL() {
             e.printStackTrace()
         }
     }
+
 }

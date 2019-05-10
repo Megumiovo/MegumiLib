@@ -1,8 +1,7 @@
-package com.taylorswiftcn.megumi.megumilib.item.util
+package com.taylorswiftcn.megumi.megumilib.bukkit.util
 
 import com.taylorswiftcn.megumi.megumilib.MegumiLib
-import com.taylorswiftcn.megumi.megumilib.regular.MathRegularUtil
-import com.taylorswiftcn.megumi.megumilib.util.ColorUtil
+import com.taylorswiftcn.megumi.megumilib.common.util.regular.MathUtil
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
@@ -25,7 +24,7 @@ class BuildItemUtil {
 
             var item: ItemStack?
 
-            if (MathRegularUtil.isPositiveInt(id)) {
+            if (MathUtil.isPositiveInt(id)) {
                 if (plugin.getVersion().startsWith("V1_13")) {
                     item = ItemStack(Material.STONE, 1)
                     name = "Please use the string ID"

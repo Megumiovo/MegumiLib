@@ -1,4 +1,4 @@
-package com.taylorswiftcn.megumi.megumilib.database
+package com.taylorswiftcn.megumi.megumilib.common.database
 
 import java.sql.Connection
 import java.sql.ResultSet
